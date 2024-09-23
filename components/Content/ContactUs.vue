@@ -8,7 +8,7 @@
     >
       <div class="flex flex-col gap-3">
         <p class="font-extrabold text-xl flex gap-2">
-          WishEat
+          Slick Slice
           <img class="w-[30px]" src="/new/images/soup.png" />
         </p>
         <p class="font-bold text-textSecondary w-[10rem]">

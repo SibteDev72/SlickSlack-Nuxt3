@@ -1,12 +1,12 @@
 <template>
   <div
-    class="px-[2rem] fixed z-[100] top-0 left-0 w-full h-[4rem] text-black bg-[#ffefd9] flex flex-row justify-between items-center"
+    class="px-[3rem] fixed z-[100] top-0 left-0 w-full h-[4rem] text-black bg-[#ffefd9] flex flex-row justify-between items-center"
   >
     <NuxtLink
       to="/#home"
       class="flex gap-2 flex-row justify-center items-center"
     >
-      <p class="font-sans font-extrabold text-[15px]">WishEat</p>
+      <p class="font-sans font-extrabold text-[15px]">Slick Slice</p>
       <img class="w-[25px] h-auto" src="/new/images/soup.png" />
     </NuxtLink>
     <div
@@ -50,29 +50,29 @@
         class="z-[300] relative cursor-pointer md:hidden"
       >
         <div
-          :class="`absolute left-0 top-[0px] bg-black w-[1.2rem] h-[0.15rem] transition-all duration-300 ease-in-out ${
+          :class="`absolute left-0 top-[0px] bg-black w-[1.5rem] h-[0.20rem] transition-all duration-300 ease-in-out ${
             !!navStatus && 'rotate-[45deg]'
           }`"
         />
         <div
-          :class="`absolute left-0 top-[0px] bg-black w-[1.2rem] h-[0.15rem] transition-all duration-300 ease-in-out ${
+          :class="`absolute left-0 top-[0px] bg-black w-[1.5rem] h-[0.20rem] transition-all duration-300 ease-in-out ${
             !!navStatus && 'rotate-[-45deg]'
           }`"
         />
         <div
-          :class="`absolute left-0 top-[-5px] bg-black w-[1.2rem] h-[0.15rem] ${
+          :class="`absolute left-0 top-[-5px] bg-black w-[1.5rem] h-[0.20rem] ${
             !!navStatus && 'hidden'
           }`"
         />
         <div
-          :class="`absolute left-0 top-[5px] bg-black w-[1.2rem] h-[0.15rem] ${
+          :class="`absolute left-0 top-[5px] bg-black w-[1.5rem] h-[0.20rem] ${
             !!navStatus && 'hidden'
           }`"
         />
       </div>
       <div
-        :class="`capitalize py-12 flex flex-col gap-4 items-center absolute z-[200] right-0 top-0 w-[45vw] h-screen bg-white md:hidden transition-all duration-300 ease-in-out ${
-          !!navStatus ? 'translate-x-0' : 'translate-x-[45vw]'
+        :class="`capitalize py-12 flex flex-col gap-4 items-start pl-6 absolute z-[200] right-0 top-0 w-[50vw] h-screen bg-white md:hidden transition-all duration-300 ease-in-out ${
+          !!navStatus ? 'translate-x-0' : 'translate-x-[50vw]'
         }`"
       >
         <div v-for="link in navLinks" :key="link.id">

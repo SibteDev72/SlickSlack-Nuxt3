@@ -1,6 +1,6 @@
 <template>
   <div
-    id="menu"
+    id="popular"
     class="pt-[4rem] w-full min-h-[100vh] font-sans flex gap-[2rem] flex-col items-center"
   >
     <div class="w-[70%]">
@@ -17,30 +17,56 @@
       </p>
     </div>
     <div
-      class="px-[3rem] w-full grid grid-cols-1 gap-y-[2rem] gap-x-[2rem] sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4"
+      class="px-[3rem] w-full grid grid-cols-1 gap-y-[2rem] gap-x-[2rem] sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
     >
       <CardsMenu
         v-for="(data, index) in cardData"
         :details="data"
         :key="index"
         id="MENUcard"
+        @update-cart="handleCartUpdate"
       />
     </div>
     <NuxtLink
       to="/MenuPage"
-      class="bg-buttonPrimary font-bold text-md rounded-full px-6 py-1 mt-4"
+      class="bg-buttonPrimary font-bold text-md rounded-full px-6 py-1"
       id="moreButton"
     >
-      More Menu
+      Menu
     </NuxtLink>
   </div>
+  <Dialog v-if="!!isOpenDetails" @close-dialog="handleClose">
+    <CardsCartDetails :data="cartData" @deleteItem="handleClose" />
+  </Dialog>
 </template>
 
 <script setup lang="ts">
-import type { menuCardInterface } from "~/types/Menu";
+import type { foodItemInterface } from "~/types/Menu";
+import type { CartItems } from "~/types/CartItems";
 import { menuCards } from "~/constants/data";
-const cardData: menuCardInterface[] = menuCards;
+const cardData: foodItemInterface[] = menuCards;
 const { $gsap, $scrollTrigger } = useNuxtApp();
+
+const cartData = ref<CartItems>({
+  id: 0,
+  title: "",
+  imgSrc: "",
+  category: "",
+  ingredients: [],
+  price: 0,
+  quantity: 0,
+  totalAmount: 0,
+});
+const isOpenDetails = ref<boolean>(false);
+
+const handleCartUpdate = (cartDetails: CartItems) => {
+  cartData.value = cartDetails;
+  isOpenDetails.value = true;
+};
+const handleClose = (value: boolean) => {
+  isOpenDetails.value = value;
+};
+
 onMounted(() => {
   $scrollTrigger.create({
     trigger: "#menu",

@@ -1,18 +1,18 @@
 <template>
   <div
-    class="relative cursor-pointer flex flex-col justify-start items-center w-full min-h-[45vh] shadow-lg rounded-xl bg-bgColorCard"
+    class="cursor-pointer flex flex-col justify-between items-center w-full h-fit shadow-lg rounded-xl bg-bgColorCard"
   >
     <img
-      class="mt-4 w-[230px] lg:w-[300px]"
+      class="w-[12rem] py-2 lg:w-[10rem] xl:w-[12rem]"
       :src="`/new/images/food/${props.details.imgSrc}`"
     />
     <div
-      class="absolute flex flex-col justify-evenly py-1 items-center bg-white w-full h-[22vh] left-0 bottom-0 rounded-b-xl"
+      class="flex flex-col justify-between py-3 items-center bg-white w-full min-h-[14vh] sm:min-h-[22vh] md:min-h-[10vh] lg:min-h-[16vh] xl:min-h-[18vh]"
     >
       <p class="font-extrabold text-md lg:text-lg">{{ props.details.title }}</p>
-      <div class="font-bold text-textSecondary flex flex-row flex-wrap gap-2">
+      <div class="font-bold text-textSecondary flex flex-row gap-2">
         <p
-          class="text-sm lg:text-lg"
+          class="text-xs lg:text-sm"
           v-for="(item, index) in props.details.ingredients"
           :key="index"
         >
@@ -20,12 +20,12 @@
         </p>
       </div>
       <div class="w-full px-[2rem] flex flex-row justify-between items-center">
-        <p class="font-extrabold text-lg">
+        <p class="font-extrabold text-md lg:text-lg">
           {{ `$${props.details.price}` }}
         </p>
         <button
           @click="handleClick"
-          class="bg-buttonPrimary text-white px-5 py-1 rounded-full"
+          class="bg-buttonPrimary text-white px-5 py-1 text-xs rounded-full xl:text-sm"
         >
           Add
         </button>

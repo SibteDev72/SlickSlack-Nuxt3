@@ -1,34 +1,57 @@
 <template>
   <div
     ref="cardRef"
-    class="relative capitalize flex flex-col justify-start items-center w-[full] min-h-[35vh] shadow-lg rounded-xl bg-bgColorCard lg:min-h-[45vh]"
+    @click="handleClick"
+    class="cursor-pointer capitalize flex flex-col flex-wrap justify-between items-center w-[full] h-fit shadow-lg rounded-xl bg-bgColorCard"
   >
     <img
-      class="mt-1 w-[10rem] py-2 xs:py-1 sm:w-[16rem] lg:w-[14rem] xl:w-[16rem]"
+      class="w-[12rem] py-2 sm:w-[13rem] lg:w-[10rem] xl:w-[12rem]"
       :src="`/new/images/food/${props.details.imgSrc}`"
     />
     <div
-      class="absolute flex flex-col justify-between py-4 items-center bg-white w-full h-[18vh] left-0 bottom-0 rounded-b-xl rounded-tl-[40%] rounded-tr-[40%]"
+      class="flex flex-col justify-between py-3 items-center bg-white w-full min-h-[14vh] rounded-b-xl rounded-tl-[40%] rounded-tr-[40%] sm:min-h-[12vh] md:min-h-[10vh] lg:min-h-[16vh] xl:min-h-[18vh]"
     >
       <p class="font-extrabold text-md">{{ props.details.title }}</p>
-      <p class="font-bold text-sm text-textSecondary">
-        {{ props.details.text }}
-      </p>
+      <div class="font-bold text-textSecondary flex flex-row flex-wrap gap-2">
+        <p
+          class="text-xs"
+          v-for="(item, index) in props.details.ingredients"
+          :key="index"
+        >
+          {{ item }}
+        </p>
+      </div>
       <div class="w-full px-[2rem] flex flex-row justify-between items-center">
-        <p class="font-extrabold text-lg">{{ props.details.price }}</p>
-        <!-- <img class="w-[20px]" src="public\assets\favorite.png" /> -->
+        <p class="font-extrabold text-lg">${{ props.details.price }}</p>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import type { foodItemInterface } from "~/types/Menu";
+import type { CartItems } from "~/types/CartItems";
+import { cartMapper } from "~/utility/helperFunction";
+import { useCart } from "~/composables/Cart";
 import VanillaTilt from "vanilla-tilt";
-const cardRef: any = ref<HTMLElement | null>(null);
-import type { menuCardInterface } from "~/types/Menu";
+
 const props = defineProps<{
-  details: menuCardInterface;
+  details: foodItemInterface;
 }>();
+const emit = defineEmits(["update-cart"]);
+
+const cardRef: any = ref<HTMLElement | null>(null);
+const { items } = useCart();
+const cartDetails = ref<CartItems>();
+const selectedID = useSelectedID();
+
+const handleClick = () => {
+  selectedID.value = props.details.id;
+  cartMapper(props.details);
+  cartDetails.value = items.value.find((item) => item.id === selectedID.value);
+  emit("update-cart", cartDetails.value);
+};
+
 onMounted(() => {
   VanillaTilt.init(cardRef.value, { max: 20, speed: 200 });
 });

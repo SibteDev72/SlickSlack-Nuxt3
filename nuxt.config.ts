@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   css: ["~/assets/css/main.css"],
   app: {
     head: {
-      title: "Wish Eat",
+      title: "Slick Slice",
       meta: [{ name: "description", content: "Everything about - Nuxt-3" }],
     },
   },

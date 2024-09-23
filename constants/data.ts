@@ -1,9 +1,5 @@
 import type { navLinkInterface } from "~/types/NavLink";
-import type {
-  menuCardInterface,
-  foodItemInterface,
-  categoryInterface,
-} from "~/types/Menu";
+import type { foodItemInterface, categoryInterface } from "~/types/Menu";
 import type { howItWorksCardInterface } from "~/types/HowItWorks";
 import type { reviewsInterface } from "~/types/Reviews";
 export const navLinks: navLinkInterface[] = [
@@ -15,9 +11,9 @@ export const navLinks: navLinkInterface[] = [
   },
   {
     id: 2,
-    ref: "menu",
-    title: "menu",
-    hash: "#menu",
+    ref: "popular",
+    title: "popular",
+    hash: "#popular",
   },
   {
     id: 3,
@@ -58,34 +54,38 @@ export const howItWorksCards: howItWorksCardInterface[] = [
     text: "The Best Quality of food for you",
   },
 ];
-export const menuCards: menuCardInterface[] = [
+export const menuCards: foodItemInterface[] = [
   {
     id: 1,
-    imgSrc: "mexicanPasta.png",
-    title: "mexican pasta",
-    text: "lorem ipsum",
-    price: "$18",
+    imgSrc: "creamePizza.png",
+    title: "Creame Tikka",
+    ingredients: ["Onion", "Mozzallera"],
+    category: "pizza",
+    price: 20,
   },
   {
     id: 2,
-    imgSrc: "supremePizza.png",
-    title: "supreme pizza",
-    text: "lorem ipsum",
-    price: "$24",
+    imgSrc: "pennaPasta.png",
+    title: "Penna Pasta",
+    ingredients: ["Chicken", "Tomatoes Sauce", "Morrocan Sauce"],
+    category: "pasta",
+    price: 18,
   },
   {
     id: 3,
-    imgSrc: "alfredoPasta.png",
-    title: "alfredo pasta",
-    text: "lorem ipsum",
-    price: "$18",
+    imgSrc: "supremePizza.png",
+    title: "Chicken Supreme",
+    ingredients: ["Chicken", "Capsicum", "Onion", "Mozzallera"],
+    category: "pizza",
+    price: 24,
   },
   {
     id: 4,
-    imgSrc: "fajitaPizza.png",
-    title: "fajita pizza",
-    text: "lorem ipsum",
-    price: "$25",
+    imgSrc: "alfredoPasta.png",
+    title: "Alfredo Pasta",
+    ingredients: ["Alfredo Sauce", "Molten Cheese", "Pepper"],
+    category: "pasta",
+    price: 18,
   },
 ];
 export const categories: categoryInterface[] = [

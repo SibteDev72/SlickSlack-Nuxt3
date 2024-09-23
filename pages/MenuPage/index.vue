@@ -1,9 +1,9 @@
 <template>
   <div
-    class="mt-[4rem] w-full min-h-[calc(100vh-4rem)] font-sans flex flex-col md:flex-row"
+    class="mt-[4rem] w-full min-h-[calc(100vh-4rem)] font-sans flex flex-col md:flex-row md:pt-8"
   >
     <div
-      class="border-b-2 py-1 border-black flex flex-col justify-center items-center md:hidden"
+      class="mb-8 border-b-2 py-1 border-black flex flex-col justify-center items-center md:hidden"
     >
       <div @click="handleDropdown" class="flex flex-row gap-3 items-center">
         <p class="text-md font-extrabold">Categories</p>
@@ -19,11 +19,11 @@
         <SideNavCategoryNav v-if="!!isOpenDropdown" :data="categoryData" />
       </div>
     </div>
-    <div class="hidden md:flex w-[20%] pl-2 flex-col gap-2 mt-[2rem]">
+    <div class="hidden md:flex w-[20%] pl-2 flex-col gap-2">
       <p class="text-xl font-extrabold">Categories</p>
       <SideNavCategoryNav :data="categoryData" />
     </div>
-    <div class="flex flex-col justify-center items-center mt-[2rem] md:w-[80%]">
+    <div class="flex flex-col justify-start items-center md:w-[80%]">
       <p :class="`font-bold text-xl ${foodData.length !== 0 && 'hidden'}`">
         Food Unavailable
       </p>

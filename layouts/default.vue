@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-x-hidden w-full flex flex-col gap-[2rem]">
+  <div class="overflow-x-hidden w-full flex flex-col gap-8">
     <BarNavbar />
     <slot />
     <ContentContactUs />
