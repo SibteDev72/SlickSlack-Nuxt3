@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative w-full px-2 py-6 overflow-y-auto h-[85vh] bg-bgPrimary flex flex-col justify-between gap-4 items-center rounded-xl md:w-[60vw]"
+    class="relative w-full px-2 py-6 overflow-y-auto h-fit bg-bgPrimary flex flex-col justify-center gap-4 items-center rounded-xl md:w-[60vw]"
   >
     <p class="font-extrabold text-lg md:text-xl lg:text-2xl">
       {{ selectedItem.title }}
