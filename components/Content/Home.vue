@@ -25,7 +25,7 @@
         </div>
       </div>
       <NuxtLink
-        to="/MenuPage"
+        to="/Menu"
         id="button"
         class="bg-buttonPrimary rounded-full px-4 py-1 max-w-max font-bold text-sm"
       >
