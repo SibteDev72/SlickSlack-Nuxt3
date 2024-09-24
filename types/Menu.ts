@@ -3,7 +3,7 @@ export type foodItemInterface = {
   imgSrc: String;
   title: String;
   ingredients: String[];
-  category: String;
+  category: string;
   price: number;
 };
 export type categoryInterface = {

@@ -28,7 +28,7 @@
       />
     </div>
     <NuxtLink
-      to="/MenuPage"
+      to="/Menu"
       class="bg-buttonPrimary font-bold text-md rounded-full px-6 py-1"
       id="moreButton"
     >
@@ -45,7 +45,6 @@ import type { foodItemInterface } from "~/types/Menu";
 import type { CartItems } from "~/types/CartItems";
 import { menuCards } from "~/constants/data";
 
-const router = useRouter();
 const cardData: foodItemInterface[] = menuCards;
 const { $gsap, $scrollTrigger } = useNuxtApp();
 
@@ -53,7 +52,7 @@ const cartData = ref<CartItems>({
   id: 0,
   title: "",
   imgSrc: "",
-  category: "",
+  category: { id: 0, title: "", icon: "" },
   ingredients: [],
   price: 0,
   quantity: 0,
