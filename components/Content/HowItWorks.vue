@@ -36,7 +36,7 @@ import { howItWorksCards } from "~/constants/data";
 const cardData: howItWorksCardInterface[] = howItWorksCards;
 const { $gsap, $scrollTrigger } = useNuxtApp();
 onMounted(() => {
-  $scrollTrigger.create({
+  const scrollTriggerInstanceHIW = $scrollTrigger.create({
     trigger: "#howItWorks",
     start: "top+=28% bottom",
     onEnter: () => {
@@ -49,6 +49,9 @@ onMounted(() => {
         ease: "power2.out",
       });
     },
+  });
+  onBeforeUnmount(() => {
+    scrollTriggerInstanceHIW.kill();
   });
 });
 </script>

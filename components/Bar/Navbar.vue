@@ -16,7 +16,7 @@
         <NuxtLink
           :to="{ path: '/', hash: link.hash }"
           :class="
-            activeLink === link.title &&
+            activeLink == link.title &&
             'inline border-b-4 border-[#FFAA33] pb-1'
           "
         >
@@ -30,7 +30,7 @@
         src="/new/images/icons/magnifying-glass-1294834.png"
       />
 
-      <NuxtLink to="/CartPage" class="relative">
+      <NuxtLink to="/Cart" class="relative">
         <img
           class="w-[20px] h-auto"
           src="/new/images/icons/shopping-304640_1920.png"
@@ -41,6 +41,13 @@
           {{ items.length }}
         </p>
       </NuxtLink>
+      <NuxtLink
+        to="/Menu"
+        class="hidden md:flex flex-row gap-1 items-center px-4 py-1 text-sm font-extrabold bg-buttonPrimary rounded-full"
+      >
+        Menu
+        <img class="w-[14px]" src="/new/images/icons/menu.png" />
+      </NuxtLink>
       <div
         @click="
           () => {
@@ -50,22 +57,22 @@
         class="z-[300] relative cursor-pointer md:hidden"
       >
         <div
-          :class="`absolute left-0 top-[0px] bg-black w-[1.5rem] h-[0.20rem] transition-all duration-300 ease-in-out ${
+          :class="`absolute left-0 top-[0px] bg-black w-[1.4rem] h-[0.15rem] transition-all duration-300 ease-in-out ${
             !!navStatus && 'rotate-[45deg]'
           }`"
         />
         <div
-          :class="`absolute left-0 top-[0px] bg-black w-[1.5rem] h-[0.20rem] transition-all duration-300 ease-in-out ${
+          :class="`absolute left-0 top-[0px] bg-black w-[1.4rem] h-[0.15rem] transition-all duration-300 ease-in-out ${
             !!navStatus && 'rotate-[-45deg]'
           }`"
         />
         <div
-          :class="`absolute left-0 top-[-5px] bg-black w-[1.5rem] h-[0.20rem] ${
+          :class="`absolute left-0 top-[-5px] bg-black w-[1.4rem] h-[0.15rem] ${
             !!navStatus && 'hidden'
           }`"
         />
         <div
-          :class="`absolute left-0 top-[5px] bg-black w-[1.5rem] h-[0.20rem] ${
+          :class="`absolute left-0 top-[5px] bg-black w-[1.4rem] h-[0.15rem] ${
             !!navStatus && 'hidden'
           }`"
         />
@@ -75,24 +82,33 @@
           !!navStatus ? 'translate-x-0' : 'translate-x-[50vw]'
         }`"
       >
+        <NuxtLink
+          to="/Menu"
+          @click="
+            () => {
+              navStatus = !navStatus;
+            }
+          "
+          class="flex flex-row gap-1 items-center px-4 py-1 text-sm font-extrabold bg-buttonPrimary rounded-full"
+        >
+          Menu
+          <img class="w-[14px]" src="/new/images/icons/menu.png" />
+        </NuxtLink>
         <div v-for="link in navLinks" :key="link.id">
-          <span
+          <NuxtLink
+            :to="{ path: '/', hash: link.hash }"
             @click="
               () => {
                 navStatus = !navStatus;
               }
             "
+            :class="`text-lg ${
+              activeLink === link.title &&
+              'inline border-b-4 border-[#FFAA33] pb-1'
+            }`"
           >
-            <NuxtLink
-              :to="{ path: '/', hash: link.hash }"
-              :class="`text-lg ${
-                activeLink === link.title &&
-                'inline border-b-4 border-[#FFAA33] pb-1'
-              }`"
-            >
-              {{ link.title }}
-            </NuxtLink>
-          </span>
+            {{ link.title }}
+          </NuxtLink>
         </div>
       </div>
     </div>

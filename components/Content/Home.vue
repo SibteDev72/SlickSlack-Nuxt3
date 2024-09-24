@@ -1,7 +1,7 @@
 <template>
   <div
     id="home"
-    class="pt-[4rem] px-[2rem] w-full min-h-[100vh] font-sans text-textPrimary bg-bgPrimary flex flex-col-reverse gap-2 justify-evenly md:flex-row md:items-center"
+    class="pt-[4rem] px-[1rem] w-full min-h-[100vh] font-sans text-textPrimary bg-bgPrimary flex flex-col-reverse gap-2 justify-evenly md:flex-row md:items-center"
   >
     <div class="flex flex-col gap-2 w-[20rem]">
       <div ref="titleContainerRef" class="overflow-hidden w-[600px]">

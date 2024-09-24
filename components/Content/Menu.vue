@@ -44,6 +44,8 @@
 import type { foodItemInterface } from "~/types/Menu";
 import type { CartItems } from "~/types/CartItems";
 import { menuCards } from "~/constants/data";
+
+const router = useRouter();
 const cardData: foodItemInterface[] = menuCards;
 const { $gsap, $scrollTrigger } = useNuxtApp();
 
@@ -68,9 +70,9 @@ const handleClose = (value: boolean) => {
 };
 
 onMounted(() => {
-  $scrollTrigger.create({
-    trigger: "#menu",
-    start: "top+=26% bottom",
+  const scrollTriggerInstanceMenu = $scrollTrigger.create({
+    trigger: "#popular",
+    start: "top+=18% bottom",
     onEnter: () => {
       $gsap.from("#MENUcard", {
         delay: 0.5,
@@ -81,13 +83,16 @@ onMounted(() => {
         ease: "power2.out",
       });
       $gsap.from("#moreButton", {
-        delay: 1.1,
+        delay: 1,
         x: -100,
         opacity: 0,
         duration: 1,
         ease: "power2.out",
       });
     },
+  });
+  onBeforeUnmount(() => {
+    scrollTriggerInstanceMenu.kill();
   });
 });
 </script>

@@ -77,7 +77,7 @@
 <script setup lang="ts">
 const { $gsap, $scrollTrigger } = useNuxtApp();
 onMounted(() => {
-  $scrollTrigger.create({
+  const scrollTriggerInstanceCU = $scrollTrigger.create({
     trigger: "#contact",
     start: "top+=20% bottom",
     onEnter: () => {
@@ -90,6 +90,9 @@ onMounted(() => {
         ease: "power2.out",
       });
     },
+  });
+  onBeforeUnmount(() => {
+    scrollTriggerInstanceCU.kill();
   });
 });
 </script>
