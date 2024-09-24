@@ -17,12 +17,12 @@
         />
       </div>
       <div ref="dropdownMenu" class="overflow-hidden mt-3 w-full">
-        <SideNavCategoryNav v-if="!!isOpenDropdown" :data="categoryData" />
+        <SideNavCategoryNav v-if="!!isOpenDropdown" />
       </div>
     </div>
     <div class="hidden md:flex w-[20%] pl-2 flex-col gap-2">
       <p class="text-xl font-extrabold">Categories</p>
-      <SideNavCategoryNav :data="categoryData" />
+      <SideNavCategoryNav />
     </div>
     <div class="flex flex-col justify-start items-center md:w-[80%]">
       <p :class="`font-bold text-xl ${foodData.length !== 0 && 'hidden'}`">
@@ -53,21 +53,19 @@
 </template>
 
 <script setup lang="ts">
-import type { foodItemInterface, categoryInterface } from "~/types/Menu";
+import type { foodItemInterface } from "~/types/Menu";
 import type { CartItems } from "~/types/CartItems";
-import { categories } from "~/constants/data";
 import { useFilteredItems } from "~/utility/helperFunction";
 
 const { $gsap } = useNuxtApp();
 const category = useSelectedCategory();
 const selectedItem = useSelectedItem();
-const categoryData: categoryInterface[] = categories;
 const foodData = ref<foodItemInterface[]>([]);
 const cartData = ref<CartItems>({
   id: 0,
   title: "",
   imgSrc: "",
-  category: "",
+  category: { id: 0, title: "", icon: "" },
   ingredients: [],
   price: 0,
   quantity: 0,
@@ -107,7 +105,7 @@ const handleClose = (value: boolean) => {
   isOpenDetails.value = value;
 };
 watch(
-  () => category.value,
+  () => category.value.title,
   (newValue) => {
     if (newValue) {
       foodData.value = useFilteredItems(newValue);
@@ -127,7 +125,7 @@ onUpdated(() => {
   );
 });
 onMounted(() => {
-  foodData.value = useFilteredItems(category.value);
+  foodData.value = useFilteredItems(category.value.title);
 });
 </script>
 

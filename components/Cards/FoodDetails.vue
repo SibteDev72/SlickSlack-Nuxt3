@@ -86,8 +86,8 @@ const handleSelect = (item: any) => {
     {
       rotate: "180deg",
       opacity: 0,
-      duration: 1,
-      x: "30vw",
+      duration: 0.7,
+      x: "40vw",
       ease: "power2.out",
     }
   );
@@ -95,16 +95,16 @@ const handleSelect = (item: any) => {
     selectedItem.value = item;
     $gsap.fromTo(
       "#pizzaDiv",
-      { opacity: 0, x: "-30vw", rotate: "-180deg" },
+      { opacity: 0, x: "-40vw", rotate: "-180deg" },
       {
         opacity: 1,
         rotate: "0deg",
-        duration: 1,
+        duration: 0.7,
         x: "0vw",
         ease: "power2.out",
       }
     );
-  }, 1000);
+  }, 700);
 };
 
 onMounted(() => {

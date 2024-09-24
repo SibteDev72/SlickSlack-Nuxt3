@@ -4,16 +4,16 @@
   >
     <img
       class="w-[12rem] py-2 lg:w-[10rem] xl:w-[12rem]"
-      :src="`/new/images/food/${props.details.imgSrc}`"
+      :src="`/new/images/food/${details.imgSrc}`"
     />
     <div
       class="flex flex-col justify-between py-3 items-center bg-white w-full min-h-[14vh] sm:min-h-[22vh] md:min-h-[10vh] lg:min-h-[16vh] xl:min-h-[18vh]"
     >
-      <p class="font-extrabold text-md lg:text-lg">{{ props.details.title }}</p>
+      <p class="font-extrabold text-md lg:text-lg">{{ details.title }}</p>
       <div class="font-bold text-textSecondary flex flex-row gap-2">
         <p
           class="text-xs lg:text-sm"
-          v-for="(item, index) in props.details.ingredients"
+          v-for="(item, index) in details.ingredients"
           :key="index"
         >
           {{ item }}
@@ -21,7 +21,7 @@
       </div>
       <div class="w-full px-[2rem] flex flex-row justify-between items-center">
         <p class="font-extrabold text-md lg:text-lg">
-          {{ `$${props.details.price}` }}
+          {{ `$${details.price}` }}
         </p>
         <button
           @click="handleClick"
