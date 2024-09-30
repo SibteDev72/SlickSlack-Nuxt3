@@ -25,5 +25,3 @@ const props = defineProps<{
   details: reviewsInterface;
 }>();
 </script>
-
-<style scoped></style>

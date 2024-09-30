@@ -1,7 +1,7 @@
 export type reviewsInterface = {
   id: number;
-  avatar: String;
-  name: String;
-  rating: String;
-  text: String;
+  avatar: string;
+  name: string;
+  rating: string;
+  text: string;
 };

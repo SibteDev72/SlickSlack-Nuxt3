@@ -21,13 +21,14 @@
 <script setup lang="ts">
 import { categories } from "~/constants/data";
 import type { categoryInterface } from "~/types/Menu";
-const activeCat = ref<String>();
+const activeCat = ref<string>();
 const category = useSelectedCategory();
 const handleClick = (selectedCategory: categoryInterface) => {
   activeCat.value = selectedCategory.title;
   category.value = selectedCategory;
 };
 onMounted(() => {
+  category.value = { id: 1, title: "pizza", icon: "pizza.png" };
   activeCat.value = category.value.title;
 });
 </script>

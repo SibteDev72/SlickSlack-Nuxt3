@@ -21,5 +21,3 @@ onUpdated(() => {
   }
 });
 </script>
-
-<style scoped></style>

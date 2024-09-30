@@ -31,7 +31,7 @@
       <div
         class="w-full px-[3rem] grid grid-cols-1 gap-x-[2rem] gap-y-[2rem] sm:grid-cols-2 md:px-[2rem]"
       >
-        <CardsFoodItem
+        <CardsMenuItem
           id="foodCardRef"
           v-for="(item, index) in foodData"
           :key="index"
@@ -53,24 +53,16 @@
 </template>
 
 <script setup lang="ts">
-import type { foodItemInterface } from "~/types/Menu";
-import type { CartItems } from "~/types/CartItems";
-import { useFilteredItems } from "~/utility/helperFunction";
+import type { MenuItemInterface } from "~/types/Menu";
+import type { CartItems } from "~/types/Cart";
+import { getFilteredItems } from "~/utility/helperFunction";
 
 const { $gsap } = useNuxtApp();
 const category = useSelectedCategory();
 const selectedItem = useSelectedItem();
-const foodData = ref<foodItemInterface[]>([]);
-const cartData = ref<CartItems>({
-  id: 0,
-  title: "",
-  imgSrc: "",
-  category: { id: 0, title: "", icon: "" },
-  ingredients: [],
-  price: 0,
-  quantity: 0,
-  totalAmount: 0,
-});
+const foodData = ref<MenuItemInterface[]>([]);
+//@ts-ignore
+const cartData = ref<CartItems>({});
 const isOpenDetails = ref<boolean>(false);
 const isOpenDropdown = ref<boolean>(false);
 const dropdownMenu = ref<HTMLElement | null>(null);
@@ -91,7 +83,7 @@ const handleDropdown = () => {
     );
   }
 };
-const handleSelect = (item: foodItemInterface) => {
+const handleSelect = (item: MenuItemInterface) => {
   typeModel.value = "foodDetails";
   selectedItem.value = item;
   isOpenDetails.value = true;
@@ -108,7 +100,7 @@ watch(
   () => category.value.title,
   (newValue) => {
     if (newValue) {
-      foodData.value = useFilteredItems(newValue);
+      foodData.value = getFilteredItems(newValue);
     }
   }
 );
@@ -125,7 +117,7 @@ onUpdated(() => {
   );
 });
 onMounted(() => {
-  foodData.value = useFilteredItems(category.value.title);
+  foodData.value = getFilteredItems(category.value.title);
 });
 </script>
 

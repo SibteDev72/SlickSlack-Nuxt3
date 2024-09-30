@@ -19,7 +19,7 @@
     <div
       class="px-[3rem] w-full grid grid-cols-1 gap-y-[2rem] gap-x-[2rem] sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
     >
-      <CardsFoodItem
+      <CardsMenuItem
         v-for="(data, index) in cardData"
         :details="data"
         :key="index"
@@ -41,14 +41,11 @@
 </template>
 
 <script setup lang="ts">
-import type { CartItems } from "~/types/CartItems";
-import type { foodItemInterface } from "~/types/Menu";
-import { foodItems } from "~/constants/data";
+import type { MenuItemInterface } from "~/types/Menu";
+import type { CartItems } from "~/types/Cart";
+import { menuItems } from "~/constants/data";
 
-const cardData: foodItemInterface[] = foodItems
-  .sort(() => Math.random() - 0.5)
-  .slice(0, 4);
-
+const cardData = ref<MenuItemInterface[]>([]);
 const { $gsap, $scrollTrigger } = useNuxtApp();
 //@ts-ignore
 const cartData = ref<CartItems>({});
@@ -63,6 +60,7 @@ const handleClose = (value: boolean) => {
 };
 
 onMounted(() => {
+  cardData.value = menuItems.sort(() => Math.random() - 0.5).slice(0, 4);
   const scrollTriggerInstanceMenu = $scrollTrigger.create({
     trigger: "#popular",
     start: "top+=18% bottom",

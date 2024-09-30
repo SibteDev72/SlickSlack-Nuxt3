@@ -72,5 +72,3 @@ const dotClicked = (number: number) => {
   currentPos.value = number;
 };
 </script>
-
-<style scoped></style>

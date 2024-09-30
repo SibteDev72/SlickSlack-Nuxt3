@@ -10,10 +10,13 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "firebase": "^10.13.2",
     "gsap": "^3.11.0",
     "nuxt": "^3.12.4",
+    "nuxt-vuefire": "^1.0.4",
     "vanilla-tilt": "^1.8.1",
-    "vue": "latest"
+    "vue": "latest",
+    "vuefire": "^3.2.0"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",

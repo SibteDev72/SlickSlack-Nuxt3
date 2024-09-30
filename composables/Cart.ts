@@ -1,11 +1,13 @@
-import type { CartItems } from "../types/CartItems";
+import type { CartItems } from "../types/Cart";
 
 export const useCart = () => {
   const items = useState<CartItems[]>("items", () => []);
   const cartTotal = useState<number>("cartTotal", () => 0);
 
   const addItem = (item: CartItems) => {
-    const existingItem = items.value.find((itm) => itm.id === item.id);
+    const existingItem = items.value.find(
+      (itm) => itm.food_id === item.food_id
+    );
     if (!existingItem) {
       items.value.push(item);
       calculateTotal();
@@ -26,6 +28,11 @@ export const useCart = () => {
     calculateTotal();
   };
 
+  const clearCart = () => {
+    items.value = [];
+    cartTotal.value = 0;
+  };
+
   const calculateTotal = () => {
     cartTotal.value = items.value.reduce(
       (total, obj) => total + (obj["totalAmount"] || 0),
@@ -38,6 +45,7 @@ export const useCart = () => {
     addItem,
     updateQuantityItem,
     removeItem,
+    clearCart,
     cartTotal,
   };
 };

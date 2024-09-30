@@ -10,9 +10,9 @@
       class="flex flex-col justify-between py-3 items-center bg-white w-full min-h-[14vh] sm:min-h-[22vh] md:min-h-[10vh] lg:min-h-[16vh] xl:min-h-[18vh]"
     >
       <p class="font-extrabold text-md lg:text-lg">{{ details.title }}</p>
-      <div class="font-bold text-textSecondary flex flex-row gap-2">
+      <div class="font-bold text-textSecondary flex flex-wrap flex-row gap-2">
         <p
-          class="text-xs lg:text-sm"
+          class="text-xs"
           v-for="(item, index) in details.ingredients"
           :key="index"
         >
@@ -35,33 +35,33 @@
 </template>
 
 <script setup lang="ts">
-import type { foodItemInterface } from "~/types/Menu";
-import type { CartItems } from "~/types/CartItems";
+import type { MenuItemInterface } from "~/types/Menu";
+import type { CartItems } from "~/types/Cart";
 import { cartMapper } from "~/utility/helperFunction";
 import { useCart } from "~/composables/Cart";
 import { categories } from "~/constants/data";
 
 const props = defineProps<{
-  details: foodItemInterface;
+  details: MenuItemInterface;
 }>();
 const emit = defineEmits(["update-cart"]);
 
 const { items } = useCart();
 const cartDetails = ref<CartItems>();
 const selectedID = useSelectedID();
+const category = useSelectedCategory();
 
-const handleClick = () => {
-  // event.stopPropagation();
+const handleClick = (event: MouseEvent) => {
+  event.stopPropagation();
   selectedID.value = props.details.id;
-  const category = useSelectedCategory();
   //@ts-ignore
   category.value = categories.find(
     (item) => item.title === props.details.category
   );
-  console.log(category.value);
   cartMapper(props.details);
-  cartDetails.value = items.value.find((item) => item.id === selectedID.value);
-  console.log(cartDetails.value);
+  cartDetails.value = items.value.find(
+    (item) => item.food_id === selectedID.value
+  );
   emit("update-cart", cartDetails.value);
 };
 </script>

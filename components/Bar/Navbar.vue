@@ -25,10 +25,10 @@
       </div>
     </div>
     <div class="flex flex-row gap-3 justify-center items-center">
-      <img
+      <!-- <img
         class="w-[15px] h-auto"
         src="/new/images/icons/magnifying-glass-1294834.png"
-      />
+      /> -->
 
       <NuxtLink to="/Cart" class="relative">
         <img
@@ -122,7 +122,7 @@ import { useCart } from "~/composables/Cart";
 
 const { items } = useCart();
 const { $gsap } = useNuxtApp();
-const activeLink = ref<String>("");
+const activeLink = ref<string>("");
 const navStatus = ref<boolean>(false);
 
 onMounted(() => {
@@ -145,5 +145,3 @@ onMounted(() => {
   window.addEventListener("scroll", handleScroll);
 });
 </script>
-
-<style scoped></style>

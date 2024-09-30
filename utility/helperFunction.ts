@@ -1,14 +1,17 @@
 import type { navLinkInterface } from "~/types/NavLink";
-import type { foodItemInterface } from "~/types/Menu";
-import type { CartItems } from "~/types/CartItems";
-import { foodItems } from "~/constants/data";
+import type { MenuItemInterface } from "~/types/Menu";
+import type { CartItems } from "~/types/Cart";
+import type { OrderItemInterface } from "~/types/Order";
+import type { formData } from "~/types/Form";
+import { menuItems } from "~/constants/data";
 import { useCart } from "~/composables/Cart";
+import { useFirestore } from "~/composables/Firestore";
 
 export const useActiveLink = (
   links: navLinkInterface[],
   scrollPosition: number
-): String => {
-  const activeLink = ref<String>("");
+): string => {
+  const activeLink = ref<string>("");
   links.map((data, index, array) => {
     const indexData = array[index];
     const previousData = index > 0 ? array[index - 1] : null;
@@ -61,15 +64,16 @@ export const useTextSlpitter = (
   return lines;
 };
 
-export const useFilteredItems = (category: String): foodItemInterface[] => {
-  return foodItems.filter((items) => items.category === category);
+export const getFilteredItems = (category: string): MenuItemInterface[] => {
+  return menuItems.filter((items) => items.category === category);
 };
 
-export const cartMapper = (item: foodItemInterface) => {
+export const cartMapper = (item: MenuItemInterface) => {
   const { addItem } = useCart();
   const category = useSelectedCategory();
   let obj: CartItems = {
-    id: item.id,
+    id: Math.floor(Math.random() * 1000) + 1000,
+    food_id: item.id,
     imgSrc: item.imgSrc,
     title: item.title,
     ingredients: item.ingredients,
@@ -79,4 +83,28 @@ export const cartMapper = (item: foodItemInterface) => {
     totalAmount: item.price,
   };
   addItem(obj);
+};
+
+export const orderMapper = (items: CartItems[], customerInfo: formData) => {
+  const { cartTotal } = useCart();
+  const { addOrder } = useFirestore();
+  let obj: OrderItemInterface = {
+    id: Math.floor(Math.random() * 1000) + 1000,
+    from_public_site: true,
+    firstName: customerInfo.firstName,
+    lastName: customerInfo.lastName,
+    address: customerInfo.address,
+    email: customerInfo.email,
+    cartItem: items.map((item) => ({
+      category_id: item.category.id,
+      food_id: item.food_id,
+      price: item.price,
+      quantity: item.quantity,
+      title: item.title,
+      totalAmount: item.totalAmount,
+    })),
+    orderTotal: cartTotal.value,
+    createdAt: new Date(),
+  };
+  addOrder(obj);
 };

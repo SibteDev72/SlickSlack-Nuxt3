@@ -82,7 +82,7 @@
 
 <script setup lang="ts">
 import { useCart } from "~/composables/Cart";
-import type { CartItems } from "~/types/CartItems";
+import type { CartItems } from "~/types/Cart";
 const { $gsap } = useNuxtApp();
 const { updateQuantityItem, removeItem } = useCart();
 

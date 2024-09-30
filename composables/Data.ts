@@ -1,4 +1,4 @@
-import type { foodItemInterface, categoryInterface } from "~/types/Menu";
+import type { MenuItemInterface, categoryInterface } from "~/types/Menu";
 export const useSelectedCategory = () =>
   useState<categoryInterface>("category", () => ({
     id: 1,
@@ -7,7 +7,7 @@ export const useSelectedCategory = () =>
   }));
 export const useSelectedID = () => useState<number>("selectedID", () => 0);
 export const useSelectedItem = () =>
-  useState<foodItemInterface>("selectedItem", () => ({
+  useState<MenuItemInterface>("selectedItem", () => ({
     id: 0,
     imgSrc: "",
     title: "",

@@ -53,16 +53,16 @@
 </template>
 
 <script setup lang="ts">
-import type { foodItemInterface } from "~/types/Menu";
-import type { CartItems } from "~/types/CartItems";
-import { useFilteredItems, cartMapper } from "~/utility/helperFunction";
+import type { MenuItemInterface } from "~/types/Menu";
+import type { CartItems } from "~/types/Cart";
+import { getFilteredItems, cartMapper } from "~/utility/helperFunction";
 import { useCart } from "~/composables/Cart";
 
 const { $gsap } = useNuxtApp();
 const { items } = useCart();
 const selectedItem = useSelectedItem();
 const selectedID = useSelectedID();
-const foodData = ref<foodItemInterface[]>([]);
+const foodData = ref<MenuItemInterface[]>([]);
 // @ts-ignore
 const cartDetails = ref<CartItems>({});
 const isOpenCart = ref<boolean>(false);
@@ -75,7 +75,9 @@ const handleClick = () => {
   selectedID.value = selectedItem.value.id;
   cartMapper(selectedItem.value);
   // @ts-ignore
-  cartDetails.value = items.value.find((item) => item.id === selectedID.value);
+  cartDetails.value = items.value.find(
+    (item) => item.food_id === selectedID.value
+  );
   isOpenCart.value = true;
 };
 
@@ -108,7 +110,7 @@ const handleSelect = (item: any) => {
 };
 
 onMounted(() => {
-  foodData.value = useFilteredItems(selectedItem.value.category);
+  foodData.value = getFilteredItems(selectedItem.value.category);
 });
 </script>
 

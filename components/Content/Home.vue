@@ -128,22 +128,3 @@ onMounted(async () => {
   });
 });
 </script>
-
-<style scoped></style>
-
-<!-- <div
-        id="dot"
-        class="absolute top-[1rem] left-[1rem] w-[40px] h-[40px] rounded-full bg-buttonPrimary"
-      />
-      <div
-        id="dot"
-        class="absolute top-[10rem] left-[2rem] w-[20px] h-[20px] rounded-full bg-buttonPrimary"
-      />
-      <div
-        id="dot"
-        class="absolute bottom-[1rem] w-[30px] h-[30px] rounded-full bg-buttonPrimary"
-      />
-      <div
-        id="dot"
-        class="absolute top-[10rem] right-0 w-[50px] h-[50px] rounded-full bg-buttonPrimary"
-      /> -->

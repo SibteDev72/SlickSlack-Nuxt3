@@ -1,5 +1,5 @@
 import type { navLinkInterface } from "~/types/NavLink";
-import type { foodItemInterface, categoryInterface } from "~/types/Menu";
+import type { MenuItemInterface, categoryInterface } from "~/types/Menu";
 import type { howItWorksCardInterface } from "~/types/HowItWorks";
 import type { reviewsInterface } from "~/types/Reviews";
 export const navLinks: navLinkInterface[] = [
@@ -54,40 +54,6 @@ export const howItWorksCards: howItWorksCardInterface[] = [
     text: "The Best Quality of food for you",
   },
 ];
-export const menuCards: foodItemInterface[] = [
-  {
-    id: 1,
-    imgSrc: "creamePizza.png",
-    title: "Creame Tikka",
-    ingredients: ["Onion", "Mozzallera"],
-    category: "pizza",
-    price: 20,
-  },
-  {
-    id: 2,
-    imgSrc: "pennaPasta.png",
-    title: "Penna Pasta",
-    ingredients: ["Chicken", "Tomatoes Sauce", "Morrocan Sauce"],
-    category: "pasta",
-    price: 18,
-  },
-  {
-    id: 3,
-    imgSrc: "supremePizza.png",
-    title: "Chicken Supreme",
-    ingredients: ["Chicken", "Capsicum", "Onion", "Mozzallera"],
-    category: "pizza",
-    price: 24,
-  },
-  {
-    id: 4,
-    imgSrc: "alfredoPasta.png",
-    title: "Alfredo Pasta",
-    ingredients: ["Alfredo Sauce", "Molten Cheese", "Pepper"],
-    category: "pasta",
-    price: 18,
-  },
-];
 export const categories: categoryInterface[] = [
   {
     id: 1,
@@ -110,7 +76,7 @@ export const categories: categoryInterface[] = [
     icon: "wrap.png",
   },
 ];
-export const foodItems: foodItemInterface[] = [
+export const menuItems: MenuItemInterface[] = [
   {
     id: 1,
     imgSrc: "fajitaPizza.png",
