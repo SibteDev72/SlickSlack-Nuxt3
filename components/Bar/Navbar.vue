@@ -7,7 +7,7 @@
       class="flex gap-2 flex-row justify-center items-center"
     >
       <p class="font-sans font-extrabold text-[15px]">Slick Slice</p>
-      <img class="w-[25px] h-auto" src="/new/images/soup.png" />
+      <img class="w-[25px] h-auto" src="/new/images/icons/soup.png" />
     </NuxtLink>
     <div
       class="hidden capitalize font-sans font-semibold md:flex flex-row gap-[1.2rem] lg:gap-[1.5rem] xl:gap-[2rem] 2xl:gap-[2rem] 3xl:gap-[2rem]"

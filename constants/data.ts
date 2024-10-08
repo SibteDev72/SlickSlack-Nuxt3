@@ -1,7 +1,7 @@
 import type { navLinkInterface } from "~/types/NavLink";
 import type { MenuItemInterface, categoryInterface } from "~/types/Menu";
 import type { howItWorksCardInterface } from "~/types/HowItWorks";
-import type { reviewsInterface } from "~/types/Reviews";
+import type { reviewsInterface } from "~/types/Services";
 export const navLinks: navLinkInterface[] = [
   {
     id: 1,

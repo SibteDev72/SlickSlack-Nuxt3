@@ -10,10 +10,12 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@stripe/stripe-js": "^4.6.0",
     "firebase": "^10.13.2",
     "gsap": "^3.11.0",
     "nuxt": "^3.12.4",
     "nuxt-vuefire": "^1.0.4",
+    "stripe": "^16.12.0",
     "vanilla-tilt": "^1.8.1",
     "vue": "latest",
     "vuefire": "^3.2.0"

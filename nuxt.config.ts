@@ -12,6 +12,18 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     currencyKey: process.env.CURRENCY_API_KEY,
+    public: {
+      stripePublicKey: process.env.STRIPE_PUBLIC_KEY,
+      firebaseApiKey: process.env.NUXT_PUBLIC_FIREBASE_API_KEY,
+      firebaseAuthDomain: process.env.NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+      firebaseProjectId: process.env.NUXT_PUBLIC_FIREBASE_PROJECT_ID,
+      firebaseStorageBucket: process.env.NUXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+      firebaseMessagingSenderId:
+        process.env.NUXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+      firebaseAppId: process.env.NUXT_PUBLIC_FIREBASE_APP_ID,
+      firebaseMeasurementId: process.env.NUXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+    },
+    stripeSecretKey: process.env.STRIPE_SECRET_KEY,
   },
 
   alias: {
@@ -29,13 +41,13 @@ export default defineNuxtConfig({
 
   vuefire: {
     config: {
-      apiKey: "AIzaSyAuiV27rP4uw_rkvHGyH9RTOhPUIyKCFes",
-      authDomain: "slick-slice.firebaseapp.com",
-      projectId: "slick-slice",
-      storageBucket: "slick-slice.appspot.com",
-      messagingSenderId: "441472391542",
-      appId: "1:441472391542:web:70df4b1a794bae97e40257",
-      measurementId: "G-JG9XMM283X",
+      apiKey: process.env.NUXT_PUBLIC_FIREBASE_API_KEY,
+      authDomain: process.env.NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+      projectId: process.env.NUXT_PUBLIC_FIREBASE_PROJECT_ID,
+      storageBucket: process.env.NUXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: process.env.NUXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+      appId: process.env.NUXT_PUBLIC_FIREBASE_APP_ID,
+      measurementId: process.env.NUXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
     },
   },
 

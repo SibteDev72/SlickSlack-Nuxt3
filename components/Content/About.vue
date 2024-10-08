@@ -1,7 +1,7 @@
 <template>
   <div
     id="about"
-    class="pt-[4.2rem] w-full min-h-[100vh] flex flex-col gap-[2rem] font-sans px-[1rem] sm:px-[3rem]"
+    class="pt-[4.2rem] w-full min-h-[calc(100vh-4rem)] flex flex-col gap-[2rem] font-sans px-[1rem] sm:px-[3rem]"
   >
     <div
       class="gap-10 flex flex-col items-center lg:flex-row lg:items-start lg:justify-between lg:gap-0"

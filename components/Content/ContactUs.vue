@@ -9,7 +9,7 @@
       <div class="flex flex-col gap-3">
         <p class="font-extrabold text-xl flex gap-2">
           Slick Slice
-          <img class="w-[30px]" src="/new/images/soup.png" />
+          <img class="w-[30px]" src="/new/images/icons/soup.png" />
         </p>
         <p class="font-bold text-textSecondary w-[10rem]">
           Township Block 2 Sector C1, 27, LHR

@@ -1,11 +1,19 @@
-import { getFirestore, addDoc, collection } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  Firestore,
+  getFirestore,
+} from "firebase/firestore";
 import type { OrderItemInterface } from "~/types/Order";
 
 export const useFirestore = () => {
-  const db = getFirestore();
-  const addOrder = async (orderData: OrderItemInterface) => {
+  const firestore: Firestore = getFirestore();
+  const addOrder = async (
+    orderData: OrderItemInterface,
+    firestore: Firestore
+  ) => {
     const collectionName = "orders";
-    const orderRef = collection(db, collectionName);
+    const orderRef = collection(firestore, collectionName);
     try {
       const docRef = await addDoc(orderRef, orderData);
       console.log("Document written with ID: ", docRef.id);
@@ -14,5 +22,5 @@ export const useFirestore = () => {
     }
   };
 
-  return { addOrder };
+  return { addOrder, firestore };
 };

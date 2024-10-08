@@ -40,7 +40,7 @@
       <img
         :id="`sadIcon${data.id}`"
         class="w-8 opacity-0"
-        src="/new/images/SAD1.gif"
+        src="/new/images/gifs/SAD1.gif"
       />
       <button
         :disabled="data.quantity === 1"
@@ -60,7 +60,7 @@
       <img
         :id="`happyIcon${data.id}`"
         class="w-8 opacity-0"
-        src="/new/images/YUMMY.gif"
+        src="/new/images/gifs/YUMMY.gif"
       />
     </div>
     <div
@@ -69,7 +69,7 @@
       <img
         :id="`deleteIcon${data.id}`"
         class="w-8 opacity-0"
-        src="/new/images/SAD2.gif"
+        src="/new/images/gifs/SAD2.gif"
       />
       <img
         src="/new/images/icons/trash.png"

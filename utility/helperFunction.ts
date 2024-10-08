@@ -6,6 +6,7 @@ import type { formData } from "~/types/Form";
 import { menuItems } from "~/constants/data";
 import { useCart } from "~/composables/Cart";
 import { useFirestore } from "~/composables/Firestore";
+import type { Firestore } from "firebase/firestore";
 
 export const useActiveLink = (
   links: navLinkInterface[],
@@ -45,7 +46,7 @@ export const useTextSlpitter = (
   avgCharacterWidth: number
 ): string[] => {
   const containerWidth = containerRef.clientWidth;
-  const avgCharWidth = avgCharacterWidth; // Approximate average character width in pixels (you can adjust this value)
+  const avgCharWidth = avgCharacterWidth;
   const charsPerLine = Math.floor(containerWidth / avgCharWidth);
 
   const lines: string[] = [];
@@ -85,8 +86,15 @@ export const cartMapper = (item: MenuItemInterface) => {
   addItem(obj);
 };
 
-export const orderMapper = (items: CartItems[], customerInfo: formData) => {
-  const { cartTotal } = useCart();
+export const orderMapper = (
+  items: CartItems[],
+  customerInfo: formData,
+  firestore: Firestore
+) => {
+  const cartTotal = items.reduce(
+    (total, obj) => total + (obj["totalAmount"] || 0),
+    0
+  );
   const { addOrder } = useFirestore();
   let obj: OrderItemInterface = {
     id: Math.floor(Math.random() * 1000) + 1000,
@@ -103,8 +111,8 @@ export const orderMapper = (items: CartItems[], customerInfo: formData) => {
       title: item.title,
       totalAmount: item.totalAmount,
     })),
-    orderTotal: cartTotal.value,
+    orderTotal: cartTotal,
     createdAt: new Date(),
   };
-  addOrder(obj);
+  addOrder(obj, firestore);
 };
