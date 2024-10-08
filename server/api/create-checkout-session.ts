@@ -24,8 +24,8 @@ export default defineEventHandler(async (event) => {
     line_items: lineItems,
     customer_email: customerInfo.email,
     mode: "payment",
-    success_url: `http://localhost:3000/success`,
-    cancel_url: `http://localhost:3000/Menu`,
+    success_url: `https://slick-slice-v1-rho.vercel.app/success`,
+    cancel_url: `https://slick-slice-v1-rho.vercel.app/Menu`,
     metadata: {
       items: JSON.stringify(items),
       customerInfo: JSON.stringify(customerInfo),
