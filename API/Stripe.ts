@@ -8,6 +8,7 @@ export async function stripeCheckout(
 ) {
   const checkout_api: string =
     "https://slick-slice-v1-rho.vercel.app/api/create-checkout-session";
+  // "api/create-checkout-session";
   const config = useRuntimeConfig();
   try {
     const { id } = await $fetch(checkout_api, {
