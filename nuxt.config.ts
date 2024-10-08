@@ -24,6 +24,8 @@ export default defineNuxtConfig({
       firebaseMeasurementId: process.env.NUXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
     },
     stripeSecretKey: process.env.STRIPE_SECRET_KEY,
+    webhookLocalSecretKey: process.env.WEBHOOK_SECRET_LOCAL_KEY,
+    webhookVercelSecretKey: process.env.WEBHOOK_SECRET_VERCEL_KEY,
   },
 
   alias: {

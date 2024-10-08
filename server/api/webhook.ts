@@ -8,7 +8,7 @@ const stripe = new Stripe(config.stripeSecretKey, { apiVersion: "2024-06-20" });
 
 export default defineEventHandler(async (event) => {
   const sig = event.node.req.headers["stripe-signature"];
-  const webhookSecret = "whsec_PVsGBOcZgGheNcpnVBnBgFrNuP8bj8ZY";
+  const webhookSecret: string = config.webhookVercelSecretKey;
   const rawBody = await readRawBody(event);
 
   if (!rawBody) {
